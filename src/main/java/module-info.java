@@ -10,6 +10,7 @@ module victormarie.cogitoboard {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens victormarie.cogitoboard to javafx.fxml;
     exports victormarie.cogitoboard;
