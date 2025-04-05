@@ -101,13 +101,13 @@ public class Tache {
         return sousTache;
     }
 
-    public void addSubTask(SousTache subTask) {
-        this.sousTache.add(subTask);
+    public void addSousTache(SousTache sousTache) {
+        this.sousTache.add(sousTache);
         this.miseajour = LocalDateTime.now();
     }
 
-    public void removeSubTask(SousTache subTask) {
-        this.sousTache.remove(subTask);
+    public void deleteSousTache(SousTache sousTache) {
+        this.sousTache.remove(sousTache);
         this.miseajour = LocalDateTime.now();
     }
 

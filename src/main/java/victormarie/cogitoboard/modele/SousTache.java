@@ -50,7 +50,7 @@ public class SousTache {
         this.miseajour = LocalDateTime.now();
     }
 
-    public boolean isterminee() {
+    public boolean estTerminee() {
         return terminee;
     }
 

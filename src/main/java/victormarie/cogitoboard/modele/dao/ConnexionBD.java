@@ -5,31 +5,31 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnexionBD {
-    private static final String URL = "jdbc:mysql://localhost:3306/kanban_ai";
+    private static final String URL = "jdbc:mysql://localhost:3306/CogitoBoard";
     private static final String USER = "root";
-    private static final String PASSWORD = "password"; // À modifier selon votre configuration
+    private static final String PASSWORD = "";
 
-    private static Connection connection;
+    private static Connection connexion;
 
-    public static Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()) {
+    public static Connection getConnexion() throws SQLException {
+        if (connexion == null || connexion.isClosed()) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                connexion = DriverManager.getConnection(URL, USER, PASSWORD);
             } catch (ClassNotFoundException e) {
                 throw new SQLException("MySQL JDBC Driver not found", e);
             }
         }
-        return connection;
+        return connexion;
     }
 
-    public static void closeConnection() {
-        if (connection != null) {
+    public static void closeConnexion() {
+        if (connexion != null) {
             try {
-                connection.close();
-                connection = null;
+                connexion.close();
+                connexion = null;
             } catch (SQLException e) {
-                System.err.println("Error closing database connection: " + e.getMessage());
+                System.err.println("Erreur à la fermeture de la connexion: " + e.getMessage());
             }
         }
     }
