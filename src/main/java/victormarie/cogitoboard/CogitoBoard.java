@@ -12,14 +12,14 @@ public class CogitoBoard extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/VueKanban.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/victormarie/cogitoboard/fxml/VueKanban.fxml"));
         Parent root = loader.load();
 
         KanbanControleur controleur = loader.getController();
         controleur.loadTaches();
 
         Scene scene = new Scene(root, 1200, 800);
-        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/victormarie/cogitoboard/css/styles.css").toExternalForm());
 
         primaryStage.setTitle("CogitoBoard - Votre Kanban intelligent");
         primaryStage.setScene(scene);

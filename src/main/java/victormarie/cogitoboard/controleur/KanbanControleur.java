@@ -222,10 +222,14 @@ public class KanbanControleur {
     @FXML
     private void showDialogueNouvelleTache() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DialogueTache.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/victormarie/cogitoboard/fxml/DialogueTache.fxml"));
             DialogPane dialogPane = loader.load();
 
             ControleurDialogueTache controleur = loader.getController();
+
+            // Créer une nouvelle tâche temporaire et la définir dans le contrôleur
+            Tache nouvelleTache = new Tache("", "");
+            controleur.setTache(nouvelleTache);
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(dialogPane);
@@ -233,7 +237,7 @@ public class KanbanControleur {
 
             Optional<ButtonType> result = dialog.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                Tache nouvelleTache = controleur.getTache();
+                controleur.updateTaskFromInputs();
                 tacheDAO.saveTache(nouvelleTache);
                 loadTaches();
                 labelStatut.setText("Tâche créée avec succès");
@@ -247,7 +251,7 @@ public class KanbanControleur {
      * Ouvre le dialogue d'édition d'une tâche existante
      */
     private void editTache(Tache tache) {
-        try {
+        /*try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskDialog.fxml"));
             DialogPane dialogPane = loader.load();
 
@@ -267,7 +271,7 @@ public class KanbanControleur {
             }
         } catch (IOException | SQLException e) {
             showErrorAlert("Erreur lors de la modification de la tâche", e.getMessage());
-        }
+        }*/
     }
 
     /**

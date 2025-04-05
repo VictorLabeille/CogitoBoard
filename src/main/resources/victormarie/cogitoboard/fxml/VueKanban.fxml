@@ -7,17 +7,17 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="victormarie.cogitoboard.controleur.KanbanControleur"
-            stylesheets="../css/styles.css">
+            stylesheets="@../css/styles.css">
 
     <top>
         <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
-            <Label text="KanbanAI" styleClass="app-title" />
+            <Label text="CogitoBoard" styleClass="app-title" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button text="Nouvelle tâche" onAction="#showNewTaskDialog" styleClass="button-primary" />
-            <Button text="Classificateur IA" onAction="#classifyTasksWithAI" styleClass="button-ai" />
+            <Button text="Nouvelle tâche" onAction="#showDialogueNouvelleTache" styleClass="button-primary" />
+            <Button text="Classificateur IA" onAction="#classerTachesAvecAI" styleClass="button-ai" />
         </HBox>
     </top>
 
@@ -59,7 +59,7 @@
                 <Insets top="5" right="10" bottom="5" left="10"/>
             </padding>
             <Label fx:id="labelStatut" text="Prêt" HBox.hgrow="ALWAYS" />
-            <Label text="KanbanAI v1.0" />
+            <Label text="CogitoBoard v1.0" />
         </HBox>
     </bottom>
 

@@ -15,5 +15,9 @@ module victormarie.cogitoboard {
     requires tensorflow;
 
     opens victormarie.cogitoboard to javafx.fxml;
+    opens victormarie.cogitoboard.controleur to javafx.fxml;
+    opens victormarie.cogitoboard.modele to javafx.fxml;
+    opens victormarie.cogitoboard.modele.dao to javafx.fxml;
+
     exports victormarie.cogitoboard;
 }
