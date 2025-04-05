@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="victormarie.cogitoboard.controleur.KanbanControleur"
+            stylesheets="../css/styles.css">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="KanbanAI" styleClass="app-title" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Nouvelle tâche" onAction="#showNewTaskDialog" styleClass="button-primary" />
+            <Button text="Classificateur IA" onAction="#classifyTasksWithAI" styleClass="button-ai" />
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="10" styleClass="kanban-board">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Colonne À faire -->
+            <VBox styleClass="kanban-column" HBox.hgrow="ALWAYS">
+                <Label text="À faire" styleClass="column-header" />
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="ColonneAFaire" styleClass="tache-container" spacing="10" />
+                </ScrollPane>
+            </VBox>
+
+            <!-- Colonne En cours -->
+            <VBox styleClass="kanban-column" HBox.hgrow="ALWAYS">
+                <Label text="En cours" styleClass="column-header" />
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="ColonneEnCours" styleClass="tache-container" spacing="10" />
+                </ScrollPane>
+            </VBox>
+
+            <!-- Colonne Terminé -->
+            <VBox styleClass="kanban-column" HBox.hgrow="ALWAYS">
+                <Label text="Terminé" styleClass="column-header" />
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="ColonneTerminee" styleClass="tache-container" spacing="10" />
+                </ScrollPane>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="footer">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <Label fx:id="labelStatut" text="Prêt" HBox.hgrow="ALWAYS" />
+            <Label text="KanbanAI v1.0" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

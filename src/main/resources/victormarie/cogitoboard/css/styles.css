@@ -1,0 +1,118 @@
+/* Styles généraux */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #f8f9fa;
+}
+
+/* En-tête */
+.header {
+    -fx-background-color: #4a6fdc;
+    -fx-padding: 10;
+}
+
+.app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Colonnes Kanban */
+.kanban-board {
+    -fx-background-color: #f0f2f5;
+}
+
+.kanban-column {
+    -fx-background-color: #ebecf0;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-pref-width: 300;
+}
+
+.column-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 0 0 10 0;
+}
+
+.tache-container {
+    -fx-padding: 5;
+}
+
+/* Cartes de tâches */
+.tache-card {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 1);
+    -fx-padding: 10;
+}
+
+.tache-titre {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.tache-description {
+    -fx-text-fill: #6b778c;
+    -fx-font-size: 12px;
+}
+
+.tache-meta {
+    -fx-font-size: 11px;
+    -fx-text-fill: #5e6c84;
+}
+
+/* Priorités */
+.priorite-high {
+    -fx-border-color: #e53935;
+    -fx-border-width: 0 0 0 3;
+}
+
+.priorite-medium {
+    -fx-border-color: #fb8c00;
+    -fx-border-width: 0 0 0 3;
+}
+
+.priorite-low {
+    -fx-border-color: #43a047;
+    -fx-border-width: 0 0 0 3;
+}
+
+/* Boutons */
+.button {
+    -fx-background-radius: 3;
+}
+
+.button-primary {
+    -fx-background-color: #4a6fdc;
+    -fx-text-fill: white;
+}
+
+.button-primary:hover {
+    -fx-background-color: #5a7fe9;
+}
+
+.button-ai {
+    -fx-background-color: #8e44ad;
+    -fx-text-fill: white;
+}
+
+.button-ai:hover {
+    -fx-background-color: #9b59b6;
+}
+
+/* Pied de page */
+.footer {
+    -fx-background-color: #e9ecef;
+    -fx-padding: 5;
+}
+
+/* Dialogue de tâche */
+.tache-dialog {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Sous-tâches */
+.sousTache-terminee {
+    -fx-strikethrough: true;
+    -fx-text-fill: #6b778c;
+}

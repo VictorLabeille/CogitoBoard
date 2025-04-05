@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TacheDAO {
 
-    public void saveTask(Tache tache) throws SQLException {
+    public void saveTache(Tache tache) throws SQLException {
         String sql = "INSERT INTO Tache (id, titre, description, priorite, statut, creation, miseajour) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -35,7 +35,7 @@ public class TacheDAO {
         }
     }
 
-    public void updateTask(Tache tache) throws SQLException {
+    public void updateTache(Tache tache) throws SQLException {
         String sql = "UPDATE tache SET titre = ?, description = ?, priorite = ?, statut = ?, miseajour = ? " +
                 "WHERE id = ?";
 
@@ -91,9 +91,9 @@ public class TacheDAO {
         return null;
     }
 
-    public List<Tache> getAllTasks() throws SQLException {
-        List<Tache> tasks = new ArrayList<>();
-        String sql = "SELECT * FROM tasks ORDER BY updated_at DESC";
+    public List<Tache> getToutesLesTaches() throws SQLException {
+        List<Tache> taches = new ArrayList<>();
+        String sql = "SELECT * FROM tache ORDER BY miseajour DESC";
 
         try (Connection conn = ConnexionBD.getConnexion();
              Statement stmt = conn.createStatement();
@@ -110,20 +110,20 @@ public class TacheDAO {
                     tache.addSousTache(sousTache);
                 }
 
-                tasks.add(tache);
+                taches.add(tache);
             }
         }
-        return tasks;
+        return taches;
     }
 
-    public List<Tache> getTasksByStatus(Tache.Statut status) throws SQLException {
-        List<Tache> tasks = new ArrayList<>();
-        String sql = "SELECT * FROM tasks WHERE status = ? ORDER BY updated_at DESC";
+    public List<Tache> getTachesByStatut(Tache.Statut statut) throws SQLException {
+        List<Tache> taches = new ArrayList<>();
+        String sql = "SELECT * FROM tache WHERE statut = ? ORDER BY miseajour DESC";
 
         try (Connection conn = ConnexionBD.getConnexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, status.name());
+            stmt.setString(1, statut.name());
 
             try (ResultSet rs = stmt.executeQuery()) {
                 SousTacheDAO sousTacheDAO = new SousTacheDAO();
@@ -137,11 +137,11 @@ public class TacheDAO {
                         tache.addSousTache(sousTache);
                     }
 
-                    tasks.add(tache);
+                    taches.add(tache);
                 }
             }
         }
-        return tasks;
+        return taches;
     }
 
     private Tache createTacheFromResultSet(ResultSet rs) throws SQLException {

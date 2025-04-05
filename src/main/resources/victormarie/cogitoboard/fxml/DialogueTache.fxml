@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="victormarie.cogitoboard.controleur.ControleurDialogueTache"
+            styleClass="tache-dialog">
+
+    <content>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="80" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+
+                <Label text="Titre:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                <Label text="Description:" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.valignment="TOP" />
+                <TextArea fx:id="descriptionArea" prefHeight="100" wrapText="true"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                <Label text="Priorité:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <ComboBox fx:id="priorityComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                <Label text="Statut:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <ComboBox fx:id="statusComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            </GridPane>
+
+            <Separator />
+
+            <Label text="Sous-tâches:" />
+
+            <HBox spacing="10">
+                <TextField fx:id="newSubTaskField" HBox.hgrow="ALWAYS" promptText="Nouvelle sous-tâche" />
+                <Button text="Ajouter" onAction="#addSousTache" />
+                <Button text="Générer avec IA" onAction="#GenerateurSousTachesAvecIA" styleClass="button-ai" />
+            </HBox>
+
+            <ListView fx:id="subTasksList" prefHeight="150" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </content>
+
+    <ButtonType fx:constant="OK" />
+    <ButtonType fx:constant="CANCEL" />
+
+</DialogPane>

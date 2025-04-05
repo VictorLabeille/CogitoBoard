@@ -13,7 +13,7 @@ public class Tache {
     private Statut statut;
     private LocalDateTime creation;
     private LocalDateTime miseajour;
-    private List<SousTache> sousTache;
+    private List<SousTache> sousTaches;
 
     public enum Priorite {
         LOW, MEDIUM, HIGH
@@ -32,7 +32,7 @@ public class Tache {
         this.statut = Statut.TODO;
         this.creation = LocalDateTime.now();
         this.miseajour = LocalDateTime.now();
-        this.sousTache = new ArrayList<>();
+        this.sousTaches = new ArrayList<>();
     }
 
     // Constructeur complet pour récupération depuis la BD
@@ -45,7 +45,7 @@ public class Tache {
         this.statut = statut;
         this.creation = creation;
         this.miseajour = miseajour;
-        this.sousTache = new ArrayList<>();
+        this.sousTaches = new ArrayList<>();
     }
 
     // Getters et Setters
@@ -98,16 +98,16 @@ public class Tache {
     }
 
     public List<SousTache> getSousTache() {
-        return sousTache;
+        return sousTaches;
     }
 
     public void addSousTache(SousTache sousTache) {
-        this.sousTache.add(sousTache);
+        this.sousTaches.add(sousTache);
         this.miseajour = LocalDateTime.now();
     }
 
     public void deleteSousTache(SousTache sousTache) {
-        this.sousTache.remove(sousTache);
+        this.sousTaches.remove(sousTache);
         this.miseajour = LocalDateTime.now();
     }
 
