@@ -40,6 +40,11 @@ public class KanbanControleur {
     private SousTacheDAO sousTacheDAO = new SousTacheDAO();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
+    @FXML
+    public void initialize() {
+        loadTaches();
+    }
+
     /**
      * Initialise le tableau Kanban en chargeant toutes les tâches
      */

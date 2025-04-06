@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="victormarie.cogitoboard.controleur.ControleurConnexionBD"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="connexion-dialog">
+
+    <!--<padding><Insets top="20" right="20" bottom="20" left="20"/></padding>-->
+
+    <!-- Titre -->
+    <Label text="Configuration de la Base de Données" GridPane.columnIndex="0"
+           GridPane.rowIndex="0" GridPane.columnSpan="2" styleClass="titre-connexion"/>
+
+    <!-- URL de la base de données -->
+    <Label text="URL de la BD:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="urlField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+               promptText="jdbc:mysql://serveur:port/base_de_donnees" />
+
+    <!-- Nom d'utilisateur -->
+    <Label text="Utilisateur:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="utilisateurField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+    <!-- Mot de passe -->
+    <Label text="Mot de passe:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <PasswordField fx:id="motDePasseField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <!-- Option de sauvegarde -->
+    <CheckBox fx:id="sauvegarderConfigCheckBox" text="Sauvegarder la configuration"
+              GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" />
+
+    <!-- Boutons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.columnIndex="0"
+          GridPane.rowIndex="5" GridPane.columnSpan="2">
+        <Button text="Tester la connexion" onAction="#testerConnexion" />
+        <Button text="Annuler" onAction="#annuler" />
+        <Button text="Connecter" onAction="#validerConnexion" defaultButton="true" />
+    </HBox>
+
+</GridPane>
