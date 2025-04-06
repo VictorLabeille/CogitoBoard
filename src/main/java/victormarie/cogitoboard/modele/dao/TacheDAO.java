@@ -99,20 +99,21 @@ public class TacheDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            SousTacheDAO sousTacheDAO = new SousTacheDAO();
-
             while (rs.next()) {
                 Tache tache = createTacheFromResultSet(rs);
-
-                // Chargement des sous-tâches
-                List<SousTache> sousTaches = sousTacheDAO.getSousTachesByTacheId(tache.getId());
-                for (SousTache sousTache : sousTaches) {
-                    tache.addSousTache(sousTache);
-                }
-
                 taches.add(tache);
             }
         }
+
+        // Charger les sous-tâches après avoir fermé le ResultSet principal
+        SousTacheDAO sousTacheDAO = new SousTacheDAO();
+        for (Tache tache : taches) {
+            List<SousTache> sousTaches = sousTacheDAO.getSousTachesByTacheId(tache.getId());
+            for (SousTache sousTache : sousTaches) {
+                tache.addSousTache(sousTache);
+            }
+        }
+
         return taches;
     }
 
@@ -126,21 +127,23 @@ public class TacheDAO {
             stmt.setString(1, statut.name());
 
             try (ResultSet rs = stmt.executeQuery()) {
-                SousTacheDAO sousTacheDAO = new SousTacheDAO();
-
                 while (rs.next()) {
+                    // Créer la tâche avec les données du ResultSet
                     Tache tache = createTacheFromResultSet(rs);
-
-                    // Chargement des sous-tâches
-                    List<SousTache> sousTaches = sousTacheDAO.getSousTachesByTacheId(tache.getId());
-                    for (SousTache sousTache : sousTaches) {
-                        tache.addSousTache(sousTache);
-                    }
-
                     taches.add(tache);
                 }
             }
         }
+
+        // Charger les sous-tâches après avoir fermé le ResultSet principal
+        SousTacheDAO sousTacheDAO = new SousTacheDAO();
+        for (Tache tache : taches) {
+            List<SousTache> sousTaches = sousTacheDAO.getSousTachesByTacheId(tache.getId());
+            for (SousTache sousTache : sousTaches) {
+                tache.addSousTache(sousTache);
+            }
+        }
+
         return taches;
     }
 

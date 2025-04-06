@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ControleurDialogueTache {
 
@@ -218,26 +219,16 @@ public class ControleurDialogueTache {
 
             // 2. Mettre à jour ou ajouter les sous-tâches actuelles
             for (SousTache subTask : sousTaches) {
-                // Vérifier si c'est une sous-tâche temporaire (créée avant que la tâche n'ait un ID)
-                if ("temp".equals(subTask.getId())) {
-                    // Mettre à jour l'ID de la sous-tâche avec l'ID réel de la tâche
-                    subTask.setId(tache.getId()); // Cela supposerait que vous avez une méthode setId dans SousTache
-
-                    // Nouvelle sous-tâche, l'ajouter à la tâche et à la base
-                    tache.addSousTache(subTask);
-                    sousTacheDAO.sauvegarderSousTache(subTask);
-                } else {
                     boolean isNew = subTask.getId().length() == 36 && !tache.getSousTache().contains(subTask);
 
                     if (isNew) {
                         // Nouvelle sous-tâche, l'ajouter à la tâche et à la base
                         tache.addSousTache(subTask);
-                        sousTacheDAO.sauvegarderSousTache(subTask);
+                        //sousTacheDAO.sauvegarderSousTache(subTask);
                     } else {
                         // Sous-tâche existante, la mettre à jour dans la base
                         sousTacheDAO.updateSousTache(subTask);
                     }
-                }
             }
         } catch (SQLException e) {
             // Afficher une erreur mais continuer (la tâche sera sauvegardée sans toutes les sous-tâches)

@@ -1,6 +1,7 @@
 package victormarie.cogitoboard.controleur;
 
 import victormarie.cogitoboard.modele.dao.TacheDAO;
+import victormarie.cogitoboard.modele.dao.SousTacheDAO;
 import victormarie.cogitoboard.modele.Tache;
 import victormarie.cogitoboard.modele.SousTache;
 import victormarie.cogitoboard.ai.ClassificateurTache;
@@ -36,6 +37,7 @@ public class KanbanControleur {
     private Label labelStatut;
 
     private TacheDAO tacheDAO = new TacheDAO();
+    private SousTacheDAO sousTacheDAO = new SousTacheDAO();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     /**
@@ -239,20 +241,20 @@ public class KanbanControleur {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 controleur.updateTaskFromInputs();
                 tacheDAO.saveTache(nouvelleTache);
-                loadTaches();
                 labelStatut.setText("Tâche créée avec succès");
             }
         } catch (IOException | SQLException e) {
             showErrorAlert("Erreur lors de la création de la tâche", e.getMessage());
         }
+        loadTaches();
     }
 
     /**
      * Ouvre le dialogue d'édition d'une tâche existante
      */
     private void editTache(Tache tache) {
-        /*try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskDialog.fxml"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/victormarie/cogitoboard/fxml/DialogueTache.fxml"));
             DialogPane dialogPane = loader.load();
 
             ControleurDialogueTache controleur = loader.getController();
@@ -264,14 +266,14 @@ public class KanbanControleur {
 
             Optional<ButtonType> result = dialog.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                Tache updatedTask = controleur.getTache();
-                tacheDAO.updateTache(updatedTask);
+                controleur.updateTaskFromInputs();
+                tacheDAO.updateTache(tache);
                 loadTaches();
                 labelStatut.setText("Tâche mise à jour avec succès");
             }
         } catch (IOException | SQLException e) {
             showErrorAlert("Erreur lors de la modification de la tâche", e.getMessage());
-        }*/
+        }
     }
 
     /**
@@ -287,6 +289,7 @@ public class KanbanControleur {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
                 tacheDAO.deleteTache(tache.getId());
+                sousTacheDAO.deleteSousTachesByTacheId(tache.getId());
                 loadTaches();
                 labelStatut.setText("Tâche supprimée avec succès");
             } catch (SQLException e) {
@@ -319,6 +322,11 @@ public class KanbanControleur {
             showErrorAlert("Erreur lors de la classification par IA", e.getMessage());
             labelStatut.setText("Échec de la classification par IA");
         }
+    }
+
+    @FXML
+    private void actualiser(){
+        loadTaches();
     }
 
     /**

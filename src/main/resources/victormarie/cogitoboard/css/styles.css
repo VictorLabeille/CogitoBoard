@@ -91,12 +91,12 @@
     -fx-background-color: #5a7fe9;
 }
 
-.button-ai {
+.button-actualiser {
     -fx-background-color: #8e44ad;
     -fx-text-fill: white;
 }
 
-.button-ai:hover {
+.button-actualiser:hover {
     -fx-background-color: #9b59b6;
 }
 

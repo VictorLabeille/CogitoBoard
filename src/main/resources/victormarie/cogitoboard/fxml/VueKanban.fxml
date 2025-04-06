@@ -17,7 +17,8 @@
             <Label text="CogitoBoard" styleClass="app-title" />
             <Region HBox.hgrow="ALWAYS" />
             <Button text="Nouvelle tâche" onAction="#showDialogueNouvelleTache" styleClass="button-primary" />
-            <Button text="Classificateur IA" onAction="#classerTachesAvecAI" styleClass="button-ai" />
+            <!--<Button text="Classificateur IA" onAction="#classerTachesAvecAI" styleClass="button-ai" />-->
+            <Button text="Actualiser" onAction="#actualiser" styleClass="button-actualiser" />
         </HBox>
     </top>
 

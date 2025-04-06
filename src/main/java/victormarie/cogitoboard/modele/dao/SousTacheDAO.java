@@ -53,6 +53,17 @@ public class SousTacheDAO {
         }
     }
 
+    public void deleteSousTachesByTacheId(String idTache) throws SQLException {
+        String sql = "DELETE FROM sousTache WHERE tacheMere = ?";
+
+        try (Connection conn = ConnexionBD.getConnexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, idTache);
+            stmt.executeUpdate();
+        }
+    }
+
     public SousTache getSousTacheById(String idSousTache) throws SQLException {
         String sql = "SELECT * FROM sousTache WHERE id = ?";
 

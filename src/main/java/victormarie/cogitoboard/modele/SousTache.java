@@ -43,6 +43,9 @@ public class SousTache {
     public String getTacheMere() {
         return tacheMere;
     }
+    public void setTacheMere(String id){
+        this.tacheMere = id;
+    }
 
     public String getTitre() {
         return titre;
