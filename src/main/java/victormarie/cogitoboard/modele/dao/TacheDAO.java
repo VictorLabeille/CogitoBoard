@@ -28,10 +28,10 @@ public class TacheDAO {
             stmt.executeUpdate();
 
             // Sauvegarde des sous-tâches
-            SousTacheDAO SousTacheDAO = new SousTacheDAO();
+            /*SousTacheDAO SousTacheDAO = new SousTacheDAO();
             for (SousTache sousTache : tache.getSousTache()) {
                 SousTacheDAO.sauvegarderSousTache(sousTache);
-            }
+            }*/
         }
     }
 

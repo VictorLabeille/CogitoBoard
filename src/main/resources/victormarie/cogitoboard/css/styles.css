@@ -114,5 +114,5 @@
 /* Sous-tâches */
 .sousTache-terminee {
     -fx-strikethrough: true;
-    -fx-text-fill: #6b778c;
+    -fx-text-fill: #6c757d;
 }

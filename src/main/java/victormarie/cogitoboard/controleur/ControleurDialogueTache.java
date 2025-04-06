@@ -224,7 +224,7 @@ public class ControleurDialogueTache {
                     if (isNew) {
                         // Nouvelle sous-tâche, l'ajouter à la tâche et à la base
                         tache.addSousTache(subTask);
-                        //sousTacheDAO.sauvegarderSousTache(subTask);
+                        sousTacheDAO.sauvegarderSousTache(subTask);
                     } else {
                         // Sous-tâche existante, la mettre à jour dans la base
                         sousTacheDAO.updateSousTache(subTask);
