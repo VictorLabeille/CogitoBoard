@@ -11,7 +11,7 @@ import java.util.List;
 public class TacheDAO {
 
     public void saveTache(Tache tache) throws SQLException {
-        String sql = "INSERT INTO Tache (id, titre, description, priorite, statut, creation, miseajour) " +
+        String sql = "INSERT INTO tache (id, titre, description, priorite, statut, creation, miseajour) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConnexionBD.getConnexion();
