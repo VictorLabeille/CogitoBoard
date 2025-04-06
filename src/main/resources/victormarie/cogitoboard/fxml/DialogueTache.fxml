@@ -42,7 +42,7 @@
             <HBox spacing="10">
                 <TextField fx:id="newSubTaskField" HBox.hgrow="ALWAYS" promptText="Nouvelle sous-tâche" />
                 <Button text="Ajouter" onAction="#addSousTache" />
-                <Button text="Générer avec IA" onAction="#GenerateurSousTachesAvecIA" styleClass="button-ai" />
+                <Button text="Générer avec IA" onAction="#GenerateurSousTachesAvecIA" styleClass="button-ai" disable="true" />
             </HBox>
 
             <ListView fx:id="subTasksList" prefHeight="150" VBox.vgrow="ALWAYS" />

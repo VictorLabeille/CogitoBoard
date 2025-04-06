@@ -117,7 +117,7 @@ public class KanbanControleur {
         sousTacheLabel.getStyleClass().add("tache-meta");
 
         // Dernière mise à jour
-        Label updateLabel = new Label("Màj: " + tache.getMiseajour().format(formatter));
+        Label updateLabel = new Label("Creation: " + tache.getCreation().format(formatter));
         updateLabel.getStyleClass().add("tache-meta");
 
         // Boutons d'action
